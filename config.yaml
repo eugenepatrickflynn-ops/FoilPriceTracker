@@ -12,7 +12,7 @@ smtp:
   host: "smtp.gmail.com"
   port: 465
   username: "eflynnmarketing@gmail.com"
-  password: "!19Mancity!junk"
+  password: "97Capgem!junk"
   from: "eflynnmarketing@gmail.com"
   to: ["eugenepatrickflynn@gmail.com"]
 
