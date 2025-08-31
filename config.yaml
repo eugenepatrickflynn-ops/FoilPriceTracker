@@ -1,0 +1,94 @@
+# KT Super K 2 Carbon 110L — multi-shop + used listings
+default_drop_percent: 8
+msrp: 2747   # adjust to the MSRP you want to compare used listings against
+
+http:
+  headers:
+    Accept: "*/*"
+    Accept-Language: "en-US,en;q=0.9"
+    Cache-Control: "no-cache"
+
+smtp:
+  host: "smtp.gmail.com"
+  port: 465
+  username: "your_email@gmail.com"
+  password: "your_app_password"
+  from: "your_email@gmail.com"
+  to: ["your_email@gmail.com"]
+
+products:
+  # Existing shops
+  - id: "foilshop-k2-110l"
+    name: "KT Super K 2 Carbon 110L — Foil Shop"
+    url: "https://foilshop.com/products/kt-ginxu-super-k-2-carbon"
+    price_regex: "6\\'7\\\"-110L\\s*-\\s*\\$([0-9,]+(?:\\.[0-9]{2})?)"
+    drop_percent: 10
+    user_agent: "Mozilla/5.0"
+
+  - id: "mackite-k2-carbon"
+    name: "KT Super K 2 Carbon — MACkite (range)"
+    url: "https://www.mackiteboarding.com/2025-kt-drifter-super-k-2-carbon/"
+    selector: ".productView-price, .price, .price-section"
+    drop_percent: 10
+
+  # More shops (markup varies; the script will try JSON-LD / OG first)
+  - id: "bigwinds-k2-carbon"
+    name: "KT Super K 2 Carbon — Big Winds"
+    url: "https://www.bigwinds.com/products/kt-super-k-2-carbon"   # update if different
+    selector: ".price, .product__price, [data-product-price]"       # fallback only
+    drop_percent: 10
+
+  - id: "cleanline-k2-carbon"
+    name: "KT Super K 2 Carbon — Cleanline Surf"
+    url: "https://www.cleanlinesurf.com/kt-super-k-2-carbon"       # update if different
+    selector: ".price, .product-price, [itemprop='price']"
+    drop_percent: 10
+
+  - id: "windance-k2-carbon"
+    name: "KT Super K 2 Carbon — Windance"
+    url: "https://www.windance.com/kt-super-k-2-carbon/"           # update if different
+    selector: ".product-price, .price, [data-product-price]"
+    drop_percent: 10
+
+  - id: "wakestyle-k2-carbon"
+    name: "KT Super K  2 Carbon — Wake-Style"
+    url: "https://www.wakestyle.com/products/kt-super-k-2-carbon"  # update if different
+    selector: ".price, .product-price"
+    drop_percent: 10
+
+searches:
+  # eBay search results for the exact board/size; tweak keywords as needed
+  - id: "ebay-k2-110l"
+    name: "eBay — KT Super K 2 Carbon 110L"
+    url: "https://www.ebay.com/sch/i.html?_nkw=KT+Super+K+2+Carbon+110L+foil+board+6%277"
+    item_selector: "li.s-item"
+    title_selector: "h3.s-item__title"
+    price_selector: ".s-item__price"
+    url_selector: "a.s-item__link"
+    include_keywords: ["kt", "super", "k", "carbon", "110l"]
+    exclude_keywords: ["95l", "105l", "125l", "135l"]
+    alert_below: 2300
+
+  # Craigslist (choose a nearby region site); adjust query/location
+  - id: "craigslist-k2-110l"
+    name: "Craigslist — KT Super K 2"
+    url: "https://geo.craigslist.org/iso/us"  # replace with a regional search URL, e.g., https://sfbay.craigslist.org/search/sss?query=KT%20Super%20K%202%20110L"
+    item_selector: ".result-row, .cl-static-search-result"
+    title_selector: ".result-title, a.cl-app-anchor"
+    price_selector: ".result-price, .price"
+    url_selector: "a.result-title, a.cl-app-anchor"
+    include_keywords: ["kt", "super", "k", "carbon"]
+    exclude_keywords: ["wing", "kite only"]
+    alert_percent_below_msrp: 20
+
+  # Generic search-capable shop or classifieds page (provide selectors)
+  - id: "generic-classifieds"
+    name: "Generic classifieds search"
+    url: "https://example.com/search?q=KT+Super+K+2+Carbon+110L"
+    item_selector: ".result, .listing, .product-card"
+    title_selector: ".title, .result-title, .product-title"
+    price_selector: ".price, .amount, [data-price]"
+    url_selector: "a[href]"
+    include_keywords: ["kt", "super", "k", "carbon"]
+    exclude_keywords: ["damaged"]
+    alert_below: 2300
