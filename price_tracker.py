@@ -23,7 +23,7 @@ CONFIG OVERVIEW (config.yaml):
         item_selector, title_selector, price_selector, url_selector,
         include_keywords: ["110L","6'7"], exclude_keywords: ["90L","105L"],
         alert_below: 2300,      # optional absolute ceiling
-        alert_percent_below_msrp: 20, # or % below msrp (if msrp present)
+        alert_percent_below_msrp: 10, # or % below msrp (if msrp present)
         site: "ebay" | "craigslist" | "generic",  # optional hints
       }
 
