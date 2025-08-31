@@ -11,10 +11,10 @@ http:
 smtp:
   host: "smtp.gmail.com"
   port: 465
-  username: "your_email@gmail.com"
-  password: "your_app_password"
-  from: "your_email@gmail.com"
-  to: ["your_email@gmail.com"]
+  username: "eflynnmarketing@gmail.com"
+  password: "!19Mancity!junk"
+  from: "eflynnmarketing@gmail.com"
+  to: ["eugenepatrickflynn@gmail.com"]
 
 products:
   # Existing shops
